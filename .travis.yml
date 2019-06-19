@@ -1,16 +1,8 @@
 language: csharp
+dist: trusty
+mono: none
+dotnet: 2.1.103
 
-before_script:
-- chmod +x build.sh
-
-script: 
-  - ./build.sh All
-  
-branches:
-  except:
-    - gh-pages
-
-notifications:
-  email: false
-  irc:
-    - "chat.freenode.net##irc.net"
+script:
+- dotnet restore
+- cd test/IrcDotNet.Test/ && dotnet build && cd -
